@@ -3,7 +3,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, Bazraa'
+    return render_template('index.html', message='Hello, World!')
+
+@app.route('/about')
+def about():
+    return render_template('about.html', message='Hello, World!')
 
 
 @app.route('/form', methods=['GET', 'POST'])
@@ -11,7 +15,10 @@ def render_form():
     message = ''
     if request.method == 'POST':
         text = request.form.get('text')
-        message = text.lower()
+        if request.form['submit_button'] == 'Lowercase':
+            message = text.lower()
+        elif request.form['submit_button'] == 'Capital':
+            message = text.upper()
     return render_template('form.html', message=message)
 
 

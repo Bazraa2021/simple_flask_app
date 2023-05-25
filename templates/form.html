@@ -6,9 +6,12 @@
     </head>
     <body>
         <form method="POST">
+            <a href="{{ url_for('hello_world') }}">Home</a>
             <label for="text">Enter your text:</label><br>
             <input type="text" id="text" name="text"><br>
-            <input type="submit" value="Submit">
+            <input type="submit" name = "submit_button" value ="Submit">
+            <input type="submit" name = "submit_button" value="Lowercase">
+            <input type="submit" name = "submit_button" value="Capital">
         </form>
         <div><h3>Result: </h3></div>
         {% if message %}
